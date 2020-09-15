@@ -1,0 +1,423 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>portfolio</title>
+    <link href="css.css">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <style>
+
+        h1 {
+            color: darkblue;
+            text-align:center;
+           margin-top:-210px;
+           text-decoration:underline;
+        }
+        .i{
+            color:black;
+
+        }
+        h3 {
+            position:relative;
+            margin-left:18%;
+        }
+        body {
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 120vh;
+            position:relative;
+            
+        }
+
+ 
+            .h{
+                text-decoration:underline;
+               margin-bottom:40px;
+               margin-top:90px;
+               font-size:20px;
+            }
+            #div4 {
+                overflow-y: scroll;
+                height:200px;
+                position:relative;
+                width:100px;
+                left:0px;
+            }
+            .p{
+                text-align:center;
+                text-decoration:underline;
+                margin-top:350px;
+            }
+            u{
+                margin-top:20px;
+            }
+
+        .input {
+            height: 50px;
+            width: 200px;
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+
+        .butn {
+            height: 50px;
+            width: 50px;
+        }
+
+        .div {
+            border: 5px solid black;
+            margin-right: 50px;
+            height: 400px;
+            overflow-y: scroll;
+            position: relative;
+            background: grey;
+            color: bisque;
+            margin-top:0px;
+        }
+        .login{
+            position:relative;
+            margin-top:30px;
+        }
+        .slide {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            margin-top: -22px;
+            padding: 16px;
+            color: white;
+        }
+
+        .next {
+            right: 0;
+        }
+
+        .text {
+            color: white;
+            font-size: 15px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+            .active, .dot:hover {
+                background-color: #717171;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+
+            <h1 class="p" >Portfolio site</h1>
+            <h3>Hello my name is Batkhusel from SW-201 and this is my portfolio site.</h3>
+            <h5>stop watch</h5>
+        </div>
+        <div id="div1">00:00:00</div>
+        <div id="div2">
+            <button onclick="start()" class="button2" id="button()">Start</button>
+            <button onclick="reset()" class="button2">Reset</button>
+            <button onclick="lap()" class="button2" id="lap">Lap</button>
+        </div>
+        <div id="div4"> </div>
+        <script>
+            var minute = 0
+            var second = 0
+            var doil = 0
+            var Id = 0
+            function start() {
+                if (Id == 0) {
+                    Id = setInterval(stopwatch, 10)
+                }
+                else {
+                    clearInterval(Id)
+                    Id = 0
+                }
+            }
+
+            function reset() {
+                minute = 0
+                second = 0
+                doil = 0
+                document.getElementById('div1').innerHTML = "00:00:00"
+                clearInterval(Id)
+                Id = 0;
+                document.getElementById('div4').innerHTML = "";
+            }
+            function lap() {
+                var p = document.createElement('p')
+                p.innerHTML = document.getElementById('div1').innerHTML
+                document.getElementById('div4').appendChild(p)
+            }
+            function stopwatch() {
+                document.getElementById('div1').innerHTML = (minute < 10 ? "0" + minute : minute) + ":" + (second < 10 ? "0" + second : second) + ":" + (doil < 10 ? "0" + doil : doil)
+                doil++;
+                if (doil == 100) {
+                    doil = 0
+                    second++;
+                }
+                if (second == 60) {
+                    second = 0
+                    minute++;
+                }
+            }
+        </script>
+        <div class="row">
+            <div class="col-sm" style="margin-top:50px;">
+                <h class="h">calculator</h>
+
+                <div id='calc-contain'>
+
+                    <form name="calculator">
+
+                        <input type="text" name="answer" />
+                        <br>
+
+                        <input type="button" value=" 1 " onclick="calculator.answer.value += '1'" />
+                        <input type="button" value=" 2 " onclick="calculator.answer.value += '2'" />
+                        <input type="button" value=" 3 " onclick="calculator.answer.value += '3'" />
+                        <input type="button" value=" + " onclick="calculator.answer.value += '+'" />
+                        <br />
+
+                        <input type="button" value=" 4 " onclick="calculator.answer.value += '4'" />
+                        <input type="button" value=" 5 " onclick="calculator.answer.value += '5'" />
+                        <input type="button" value=" 6 " onclick="calculator.answer.value += '6'" />
+                        <input type="button" value=" - " onclick="calculator.answer.value += '-'" />
+                        </br>
+
+                        <input type="button" value=" 7 " onclick="calculator.answer.value += '7'" />
+                        <input type="button" value=" 8 " onclick="calculator.answer.value += '8'" />
+                        <input type="button" value=" 9 " onclick="calculator.answer.value += '9'" />
+                        <input type="button" value=" x " onclick="calculator.answer.value += '*'" />
+                        </br>
+
+                        <input type="button" value=" c " onclick="calculator.answer.value = ''" />
+                        <input type="button" value=" 0 " onclick="calculator.answer.value += '0'" />
+                        <input type="button" value=" = " onclick="calculator.answer.value = eval(calculator.answer.value)" />
+                        <input type="button" value=" / " onclick="calculator.answer.value += '/'" />
+                        </br>
+
+
+
+                    </form>
+                    <div id="agh">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <u>To Do list</u>
+
+                <div class="div">
+                    <input class="input" type="text" id="input" placeholder="To Do List ..." />
+                    <button class="butn" onclick="click2()">+</button>
+                    <div id="item" style="margin-left:20px;">
+
+                    </div>
+                </div>
+                <script>
+                    var input = document.getElementById('input')
+                    function click2() {
+                        var p = document.createElement("p")
+                        var b = document.createElement('button');
+                        b.innerHTML = "X"
+                        b.style.position = "absolute";
+                        b.style.marginTop = "-25px";
+                        b.style.marginLeft = "205px";
+                        p.innerHTML = input.value
+                        b.onclick = function () {
+                            p.style.display = "none"
+                            b.style.display = "none"
+                        }
+
+                        document.getElementById("item").append(p, b)
+                    }
+                </script>
+            </div>
+            <div class="col-sm">
+                <div class="login">
+                    <h1><b>Login</b></h1> <p>Username</p> <input type="text" name="username" id="username" /> <p>Password</p> <input type="password" name="password" id="password" /> <button onclick="click1()">Login</button>
+                    <script>
+                        var objPeople = [{ username: "Turuu", password: "19980927" },
+                        { username: "Bataa", password: "1234" },
+                        { username: "Dorj", password: "9876" }] function click1() {
+                            var username = document.getElementById("username").value var password = document.getElementById("password").value for (i = 0; i < objPeople.length; i++) {
+                                if (username == objPeople[i].username) {
+                                    if (password == objPeople[i].password) {
+                                        alert("Амжилттай нэвтэрлээ")
+                                    } else if (username == objPeople[i].username) { if (password !== objPeople[i].password) { alert("password буруу") } }
+                                } else if (password == objPeople[i].password) { if (username !== objPeople[i].username) { alert("username буруу") } }
+                            }
+                        }</script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <a>change color:</a>
+                <button onclick="click1()">change</button>
+                <script>
+                    var num = 0
+                    for (var i = 0; i < 5; i++) {
+                        function click1() {
+                            num++;
+                            if (num == 1) {
+                                document.body.style.backgroundColor = "yellow"
+                            }
+                            else if (num == 2) {
+                                document.body.style.backgroundColor = "blue"
+                            }
+                            else if (num == 3) {
+                                document.body.style.backgroundColor = "green"
+                            }
+                            else if (num == 4) {
+                                document.body.style.backgroundColor = "white"
+                                num = 0
+                            }
+                        }
+                    }
+                    var myDivs = []
+
+                    myDivs[2].style.backgroundColor = "blue"
+                </script>
+            </div>
+            <div class="col-sm">
+                <div class="slide">
+                    <a>photo slider</a>
+                    <div class="mySlides">
+                        <img src="mon.jpg" alt="..." class="img-thumbnail">
+                        <div class="text">Nuur1</div>
+                    </div>
+
+                    <div class="mySlides">
+                        <img src="heart.jpg" alt="..." class="img-thumbnail">
+                        <div class="text">Nuur2</div>
+                    </div>
+
+                    <div class="mySlides">
+                        <img src="road.jpg" alt="..." class="img-thumbnail">
+                        <div class="text">Nuur3</div>
+                    </div>
+                    <a class="prev" onclick="cursor(-1)">&#10094;</a>
+                    <a class="next" onclick="cursor(1)">&#10095;</a>
+                </div>
+
+                <div style="text-align:center">
+                    <span class="dot" onclick="dooot(1)"></span>
+                    <span class="dot" onclick="dooot(2)"></span>
+                    <span class="dot" onclick="dooot(3)"></span>
+                </div>
+                <script>
+                    var slideIndex = 1;
+                    showSlides(slideIndex);
+
+                    function cursor(n) {
+                        showSlides(slideIndex += n);
+                    }
+
+                    function dooot(n) {
+                        showSlides(slideIndex = n);
+                    }
+
+                    function showSlides(n) {
+                        var i;
+                        var a = document.getElementsByClassName("mySlides");
+                        var dots = document.getElementsByClassName("dot");
+                        if (n > a.length) { slideIndex = 1 }
+                        if (n < 1) { slideIndex = a.length }
+                        for (i = 0; i < a.length; i++) {
+                            a[i].style.display = "none";
+                        }
+                        for (i = 0; i < dots.length; i++) {
+                            dots[i].className = dots[i].className.replace(" active", "");
+                        }
+                        a[slideIndex - 1].style.display = "block";
+                        dots[slideIndex - 1].className += " active";
+                    }
+                </script>
+            </div>
+            <div class="col-sm">
+                <button onclick="play(2)">Daavu</button>
+                <button onclick="play(1)">Haich</button>
+                <button onclick="play(0)">Chuluu</button>
+                <p id="result"></p>
+                <script>
+                    function play(arg) {
+                        var randomNumber = Math.floor(Math.random() * 3)
+
+                        console.log(randomNumber)
+                        var myString = "com: "
+                        if (randomNumber == 0)
+                            myString += "chuluu"
+                        else if (randomNumber == 1)
+                            myString += "haich"
+                        else if (randomNumber == 2)
+                            myString += "chuluu"
+                        myString += " me : " + arg
+                        document.getElementById("result").innerHTML = myString
+
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="js.js"></script>
+</body>
+</html>
